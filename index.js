@@ -8,15 +8,15 @@ app.use(express.json());
 
 const {
     createCourse,
-    getCourses,
+    getCourse,
     updateCourses,
     deleteCourses
 } = require('./controllers/courseController')
 
-app.post('/api/create',createCourse);
-app.get('/api/get',getCourses)
-app.put('/api/update',updateCourses)
-app.delete('/api/delete',deleteCourses)
+app.post('/api/courses',createCourse);
+app.get('/api/courses/:id',getCourse)
+app.put('/api/courses/:id',updateCourses)
+app.delete('/api/courses/:id',deleteCourses)
 
 app.listen(process.env.PORT,()=>{
     console.log(`Server is running on PORT ${process.env.PORT}`)
