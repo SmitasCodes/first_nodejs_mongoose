@@ -9,7 +9,7 @@ const createCourse = async (req, res) => {
             author: req.body.author,
             isPublished: true
         })
-        res.status(200).json(course)
+        res.status(200).send(course)
     }
     catch (err){
         res.status(500).send(err.message);
@@ -21,7 +21,7 @@ const getCourse = async (req, res) => {
     try {
         const course = await Course.findById(req.params.id);
         if (!course) return res.status(404).send("The course with the given ID was not found.");
-        res.status(200).send(courses);
+        res.status(200).send(course);
     } catch (err) {
         res.status(500).send(err.message);
     }
@@ -51,7 +51,7 @@ const deleteCourses = async (req, res) => {
 
 module.exports = {
     createCourse,
-    getCourses,
+    getCourse,
     updateCourses,
     deleteCourses
 }
